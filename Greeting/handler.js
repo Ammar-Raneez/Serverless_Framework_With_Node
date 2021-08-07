@@ -1,13 +1,16 @@
 "use strict";
 
 module.exports.greeting = (event, context, callback) => {
+  console.log(event);
+
   const name = event.pathParameters.name;
-  const message = event.path === `/hello/${name}` ? `Hello, ${name}` : `Good bye, ${name}`;
+  const message = event.path === `/greeting/${name}` ? `Hello, ${name}` : `Good bye, ${name}`;
 
   const response = {
     statusCode: 200,
     body: JSON.stringify({
       message,
+      // event
       // event,
       // name: event.pathParameters.name,
     })

@@ -19,4 +19,4 @@ functions:
     events:
       - http:
           method: GET
-          path: /greeting
+          path: /greeting/{name}
