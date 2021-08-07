@@ -1,0 +1,22 @@
+{
+  "name": "launching-scrapers-with-script",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.92.0",
+    "cheerio": "^1.0.0-rc.2",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "serverless-offline-scheduler": "^0.3.3"
+  }
+}
