@@ -27,7 +27,7 @@ module.exports.scrape = (event, context, callback) => {
     );
 };
 
-module.exports.launch_scrapers = (event, context, callback) => {
+module.exports.launchScrapers = (event, context, callback) => {
   // launch launch a lambda for each business name
   getBusinesses.forEach(businessName => {
     deployScrapers(businessName);

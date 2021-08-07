@@ -1,0 +1,27 @@
+# Will hold all resource related configurations
+
+YelpData:
+  # type of dynamodb table
+  Type: AWS::DynamoDB::Table
+
+  # props of that table
+  Properties:
+    TableName: ${self:provider.environment.DB_NAME}
+    BillingMode: PAY_PER_REQUEST
+
+    AttributeDefinitions:
+      - AttributeName: id
+        AttributeType: S
+      - AttributeName: businessName
+        AttributeType: S
+      - AttributeName: reviewCount
+        AttributeType: S
+      - AttributeName: rating
+        AttributeType: S
+      - AttributeName: scrapedAt
+        AttributeType: S
+
+    # make the attribute id our partition/primary key
+    KeySchema:
+      - AttributeName: id
+        KeyType: HASH # --> means primary/partition

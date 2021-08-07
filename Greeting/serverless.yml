@@ -1,0 +1,22 @@
+service: greeting-service
+
+frameworkVersion: '2'
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  lambdaHashingVersion: 20201221
+  stage: ${opt:stage, 'dev'}
+  runtime: nodejs12.x
+  region: us-east-1
+
+functions:
+  greeting:
+    name: greeting-${opt:stage}
+    handler: handler.greeting
+    events:
+      - http:
+          method: GET
+          path: /greeting

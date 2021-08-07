@@ -1,0 +1,40 @@
+service: yelp-scraper-service
+
+frameworkVersion: '2'
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  lambdaHashingVersion: 20201221
+  stage: ${opt:stage, 'dev'}
+  environment: ${file(serverless.env.yml):${opt:stage, self:provider.stage}}
+  runtime: nodejs12.x
+  region: us-east-1
+  iamRoleStatements:
+    - ${file(iam/iam.yml):YelpDataIAM}
+
+# extra resources created using cloud formation
+resources:
+  Resources:
+    # the specific resource's id - must be unique
+    Yelp_Data: ${file(resources/resources.yml):YelpData}
+
+
+functions:
+  scrape:
+    name: scrape-${opt:stage}
+    handler: handler.scrape
+    events:
+      - http:
+          method: GET
+          path: /scrape
+
+  launchScrapers:
+    name: launchScrapers-${opt:stage}
+    handler: handler.launchScrapers
+    events:
+      - http:
+          method: GET
+          path: /launchScrapers
