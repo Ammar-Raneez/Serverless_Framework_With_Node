@@ -6,7 +6,7 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient();
 module.exports = (yelpData, businessName) => {
   const date = JSON.stringify(new Date());
   const params = {
-    TableName: process.env.DYNAMODB_TABLE,
+    TableName: process.env.DB_NAME,
     Item: {
       id: uuid.v1(),
       businessName: businessName,

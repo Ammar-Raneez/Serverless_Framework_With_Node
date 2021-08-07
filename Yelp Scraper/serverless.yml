@@ -29,7 +29,7 @@ functions:
     events:
       - http:
           method: GET
-          path: /scrape
+          path: /scrape/{businessName}
 
   launchScrapers:
     name: launchScrapers-${opt:stage}
